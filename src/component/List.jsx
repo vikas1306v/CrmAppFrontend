@@ -13,6 +13,13 @@ const List = ({user,campaign}) => {
       method: "POST",
       headers: headers
   });
+  const data=await response.json();
+  if(data.status==true){
+    alert("Campaign started")
+  }else{
+    alert(data.message)
+  
+  }
   }
   return (
     <>
@@ -31,7 +38,7 @@ const List = ({user,campaign}) => {
             <>
               <h2 className="text-gray-900 text-lg title-font font-medium mb-2">Rule: {campaign.rule}</h2>
               <p className="leading-relaxed text-base">{campaign.startDate}</p>
-              <p className="leading-relaxed text-base">Campaign Status{campaign.campaignOver?<h1>True</h1>:<h1>False</h1>}</p>
+              <p className="leading-relaxed text-base">Campaign Status : Over Or not{campaign.campaignOver?<h1>Yes</h1>:<h1>No</h1>}</p>
               <button onClick={handleStartCampaign}
                 className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded ${campaign.campaignOver ? 'opacity-50 cursor-not-allowed' : ''}`} 
                 disabled={campaign.campaignOver}

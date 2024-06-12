@@ -16,8 +16,8 @@ const SignInPage = () => {
     const [password, setPassword] = useState('');
     const [keepLoggedIn, setKeepLoggedIn] = useState(true);
     const [providerData, setProviderData] = useState({
-      email: "",
-      name: "",
+      email: "vikas1306v@gmail.com",
+      name: "vikas verma",
     });
   
 
@@ -34,6 +34,7 @@ const SignInPage = () => {
         }
       );
       const data = await response.json();
+      console.log(data.data)
       dispatch(addUser(data.data))
       if (data.data != null) {
         navigate("/");
